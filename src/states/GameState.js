@@ -1,13 +1,15 @@
-import RainbowText from 'objects/RainbowText';
-
 class GameState extends Phaser.State {
+  preload() {
+    this.load.image('background', '../assets/wave.jpg');
+    this.load.image('phaser', '../assets/phaser.png');
+    this.load.image('asuna1', '../assets/asuna_sao_by_vali233.png');
+    this.load.image('asuna2', '../assets/fairy_dance_asuna_by_vali233.png');
+  }
 
 	create() {
-		let center = { x: this.game.world.centerX, y: this.game.world.centerY }
-		let text = new RainbowText(this.game, center.x, center.y, "- phaser -\nwith a sprinkle of\nES6 dust!");
-		text.anchor.set(0.5);
+	  const pic = this.rnd.between(1,2);
+    this.state.start('StateB', true, false, pic);
 	}
-
 }
 
 export default GameState;
